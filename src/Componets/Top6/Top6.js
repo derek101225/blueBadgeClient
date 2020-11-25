@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+// import button from './Componets/Search/Search'
+
 
 const Top6 = () => {
     const [movies, setMovies] = useState([])
@@ -7,7 +9,6 @@ const Top6 = () => {
         loadData();
     }, []);
 
-        
     const loadData = async () => {
         const PopulerURL = 'https://api.themoviedb.org/3/movie/popular?api_key=58269892c382f28ba4692e1cab597755&language=en-US&page=1'
 
@@ -19,9 +20,6 @@ const Top6 = () => {
             console.error(err);
         }
     }
-
-
-
 
     return(
         <div>
