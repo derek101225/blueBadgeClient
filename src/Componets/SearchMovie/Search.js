@@ -43,10 +43,6 @@ const SearchMovies = () => {
             </div>
         ))}
         </div>
-            <div>
-                
-            </div>
-
     </div>
     )
 }
