@@ -1,9 +1,11 @@
 import './App.css';
+import SearchMovie from './Componets/Search'
 
 function App() {
   return (
-    <div className="App">
-      <div></div>
+    <div className="container">
+    <h1 className='title'>MovieView Search</h1>
+    <SearchMovie/>
     </div>
   );
 }
