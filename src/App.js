@@ -1,4 +1,3 @@
-
 import Movieview from './Componets/MovieView';
 
 
