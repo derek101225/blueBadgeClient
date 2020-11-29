@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import Movie from './Movie'
 
-const featured_API = `https://api.themoviedb.org/3/movie/popular?api_key=58269892c382f28ba4692e1cab597755&language=en-US&page=1`
+const upcoming = `https://api.themoviedb.org/3/movie/upcoming?api_key=58269892c382f28ba4692e1cab597755&language=en-US&page=1`
 
-function Movieview() {
+function UpComing() {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('')
 
   const search_API = `https://api.themoviedb.org/3/search/movie?api_key=5dcf7f28a88be0edc01bbbde06f024ab&language=en-US&query=`
 
   useEffect(() => {
-    fetch(featured_API)
+    fetch(upcoming)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -57,4 +57,4 @@ function Movieview() {
   );
 }
 
-export default Movieview;
+export default UpComing;

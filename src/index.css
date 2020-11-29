@@ -97,3 +97,8 @@ header{
 .search:focus{
   outline: none;
 }
+
+.Home{
+  color: White;
+  text-decoration: none;
+}
