@@ -1,4 +1,11 @@
 import React from 'react';
+import Auth from '../Auth/Auth'
+import {
+  Route,
+  Link,
+  Switch
+} from 'react-dom'
+
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -17,6 +24,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+
 
 const drawerWidth = 240;
 
@@ -97,6 +105,8 @@ export default function MiniDrawer() {
 
   return (
     <div className={classes.root}>
+
+    
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -119,6 +129,7 @@ export default function MiniDrawer() {
           <Typography variant="h6" noWrap>
             MovieView
           </Typography>
+          <button><Link to="/Auth">Login</Link></button>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -167,6 +178,14 @@ export default function MiniDrawer() {
           testing again
         </Typography>
       </main>
-    </div>
+
+        <div className="login-route">
+        <Switch>
+        <Route exact path="/Auth"><Auth /></Route>
+        </Switch>
+        </div>
+    </div> 
   );
 }
+
+
