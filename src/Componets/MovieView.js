@@ -46,7 +46,7 @@ function Movieview() {
             </input>
         </form>
         <a className='Home' href='/TopRated'><h3>Top Rated</h3></a>
-      <h3>Login/sign up</h3>
+        <a className='Home' href='/SignUp'><h3>Login/sign up</h3></a>
     </header>
 
     <div className='movie-container'>
