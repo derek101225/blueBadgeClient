@@ -1,14 +1,14 @@
-import './App.css';
-import MiniDrawer from './Components/Sidebar/Sidebar'
+
+
+import Movieview from './Componets/MovieView';
 
 
 
 function App() {
   return (
-    <div className="App">
-      <MiniDrawer />
       
-      
+    <div>
+      <Movieview />
 
     </div>
   );
