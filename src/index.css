@@ -116,5 +116,8 @@ header{
     .nav{
       display: none;
     }
+    header{
+      padding-bottom: 5px;
+    }
   
 }
