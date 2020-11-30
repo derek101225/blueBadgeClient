@@ -11,8 +11,9 @@ const Auth = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log('submitted')
 
-        const url = login ? 'https://localhost:3000/user/login' : 'https://localhost:3000/user/register';
+        const url = login ? 'http://localhost:3000/user/login' : 'http://localhost:3000/user/register';
 
         const bodyObj = login ? {
             username: username,
@@ -54,7 +55,7 @@ const Auth = (props) => {
              <input 
              type="text"
              id="email"
-             placeholder="email"
+             placeholder="email@email"
              value={email}
              onChange={(event) => setEmail(event.target.value)}
              />
@@ -85,12 +86,15 @@ const Auth = (props) => {
             value={password}
             placeholder="password"
             onChange={(event) => {
+                // console.log(event)
                 setPassword(event.target.value)
             }} />
             <br />
-            <button onClick={loginToggle}>Sign Up</button>
+            <button type="submit">Submit</button>
             <br />
-            <button type ="submit">Login</button>
+            <button type="submit">Login</button>
+            <br />
+            <button onClick={loginToggle}>Sign Up</button>
 
             </form>
          </div>
