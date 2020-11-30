@@ -49,13 +49,14 @@ const Auth = (props) => {
      const signupFields = () => {
          return !login ? (
              <div>
-             <label htmlFor="username">Username</label>
+             <label htmlFor="email">Email</label>
              <br />
              <input 
              type="text"
-             id="username"
-             value={username}
-             onChange={(event) => setUsername(event.target.value)}
+             id="email"
+             placeholder="email"
+             value={email}
+             onChange={(event) => setEmail(event.target.value)}
              />
              </div>          
          ) : null
@@ -87,7 +88,7 @@ const Auth = (props) => {
                 setPassword(event.target.value)
             }} />
             <br />
-            <button onClick={loginToggle}>Register</button>
+            <button onClick={loginToggle}>Sign Up</button>
             <br />
             <button type ="submit">Login</button>
 

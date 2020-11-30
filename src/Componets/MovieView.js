@@ -42,13 +42,16 @@ function Movieview() {
             <input className='search' type='text' value={searchTerm} onChange={handleOnChange} placeholder='Search Movie'>
             </input>
         </form>
-      <h3>Login/sign up</h3>
+        
+
     </header>
 
     <div className='movie-container'>
       {movies.length > 0 && movies.map((movie) => 
       <Movie key={movie.id}{...movie} />)}
     </div>
+
+
     </>
   );
 }
