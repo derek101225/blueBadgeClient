@@ -13,8 +13,8 @@ function Movieview() {
     fetch(featured_API)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setMovies(data.results);
+        
       });
   },[])
 
@@ -42,16 +42,14 @@ function Movieview() {
     <a className='Home' href='/'><h3 className='nav'>MovieView</h3></a>
     <a className='Home' href='/UpComing'><h3 className='nav'>Up Coming</h3></a>
       <form onSubmit={handleOnSumit}>
-            <input className='search' type='text' value={searchTerm} onChange={handleOnChange} placeholder='Search Movie'>
-            </input>
+            <input className='search' type='text' value={searchTerm} onChange={handleOnChange} placeholder='Search Movie' />
         </form>
         <a className='Home' href='/TopRated'><h3 className='nav'>Top Rated</h3></a>
         <a className='Home' href='/SignUp'><h3 className='nav'>Login/sign up</h3></a>
     </header>
 
     <div className='movie-container'>
-      {movies.length > 0 && movies.map((movie) => 
-      <Movie key={movie.id}{...movie} />)}
+      {movies.length > 0 ?  movies.map((movie) => <Movie movie={movie} key={movie.id} />)  : <> </> }
     </div>
     </>
   );

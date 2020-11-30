@@ -1,26 +1,44 @@
 import React from 'react'
+import {useState} from 'react'
+import {Modal} from 'react-bootstrap';
 
 
-
-const Movie = ({title, poster_path, overview, vote_average,}) => {
-     const IMG_API = `https://image.tmdb.org/t/p/w1280${poster_path}`
+const Movie = (props) => {
+    const IMG_API = `https://image.tmdb.org/t/p/w1280${props.movie.poster_path}`
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
 
     return(    
-    <div className='movie'>
-           <a href='/MovieCard'><img key={Movie.id} src={IMG_API} alt={title} /></a>
-            <div className='movie-info'>
-                <h3>{title}</h3>
-                <span>{vote_average}</span>
+        <>
+            <div className='movie'>
+                <img variant="primary" onClick={handleShow} src={IMG_API} alt={props.movie.title} />
+                <div className='movie-info'>
+                    <h3>{props.movie.title}</h3>
+                    <span>{props.movie.vote_average}</span>
+                </div>
+                <div className="movie-over" onClick={handleShow}>
+                    <h2>Overview:</h2>
+                    <p>{props.movie.overview}</p>
+                </div>
             </div>
 
-        <div className='movie-over'>
-            <h2>OverView:</h2>
-            <p>{overview}</p>
-        </div>
-    </div>
-
+            
+            <Modal className='modal' show={show} onHide={handleClose}>
+                <Modal.Header >
+                <div className='img-container'>
+                    <img className='img' variant="primary" src={IMG_API} alt={props.movie.title} />
+                    </div>
+                </Modal.Header>
+                <Modal.Body>{props.movie.title} <br /> <span></span></Modal.Body>
+                <Modal.Footer>
+                    
+                </Modal.Footer>
+            </Modal>
+            
+        </>
+        
     )
 }
-
 export default Movie

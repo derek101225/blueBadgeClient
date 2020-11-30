@@ -79,15 +79,15 @@ code {
 
 header{
   background-color: #373b69;
-  padding: 1rem;
+  padding: 1rem !;
   display: flex;
   justify-content: space-between;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1;
-  padding-top: 0px;
-  padding-bottom:0px;
+  padding-top: 10px;
+  padding-bottom:10px;
 }
 .search{
   border: 2px solid #22254b;
@@ -95,7 +95,8 @@ header{
   font-family: inherit;
   font-size: 1.2rem;
   padding: 0.5rem 2rem;
-  margin-top: 7px;
+  margin-top: 0px;
+  
   
 
 }
@@ -109,7 +110,22 @@ header{
 
 .Home{
   color: White;
-  text-decoration: none;
+  text-decoration: none !important;
+  padding: 0 15px 0 15px;
+  
+}
+
+.modal{
+  color: black;
+}
+
+.img{
+  max-width: 80%;
+  
+}
+.img-container{
+  display:flex;
+  justify-content:center;
 }
 
 @media only screen and (max-width: 800px) {

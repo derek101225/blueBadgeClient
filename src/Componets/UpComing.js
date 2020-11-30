@@ -50,8 +50,7 @@ function UpComing() {
     </header>
 
     <div className='movie-container'>
-      {movies.length > 0 && movies.map((movie) => 
-      <Movie key={movie.id}{...movie} />)}
+    {movies.length > 0 ?  movies.map((movie) => <Movie movie={movie} key={movie.id} />)  : <> </> }
     </div>
     </>
   );
