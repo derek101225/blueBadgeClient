@@ -1,11 +1,13 @@
 import React from 'react'
 import {Form , FormGroup, Label, Input, Button} from 'reactstrap'
 import { useState } from 'react'
+import {useHistory} from 'react-router-dom';
 
 const Signup = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [username, setUsername] = useState('')
+    const history = useHistory();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -17,7 +19,8 @@ const Signup = (props) => {
             })
         }).then((response) => response.json()
         ).then((data) => {
-            props.updateToken(data.token)
+            props.updateToken(data.token);
+            history.push('/');
         })
     }
 

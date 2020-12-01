@@ -10,6 +10,7 @@ const Movie = (props) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    console.log(props.movie.id)
 
     return(    
         <>
@@ -32,7 +33,7 @@ const Movie = (props) => {
                     <img className='img' variant="primary" src={IMG_API} alt={props.movie.title} />
                     </div>
                 </Modal.Header>
-                <Modal.Body>{props.movie.title} <br /> <span><RatingIndex/></span></Modal.Body>
+                <Modal.Body>{props.movie.title} <br /> <span><RatingIndex movie={props.movie}/></span></Modal.Body>
                 <Modal.Footer>
                     
                 </Modal.Footer>

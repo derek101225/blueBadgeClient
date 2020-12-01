@@ -1,10 +1,12 @@
 import React from 'react'
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap'
 import { useState } from 'react'
+import {useHistory} from 'react-router-dom';
 
 const Login = (props) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const history = useHistory();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -16,7 +18,9 @@ const Login = (props) => {
             })
         }).then((response) => response.json()
         ).then((data) => {
-            props.updateToken(data.token)
+            console.log(data);
+            props.updateToken(data.token);
+            history.push('/');
         })
     }
 
