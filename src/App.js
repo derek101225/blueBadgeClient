@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Movieview from './Componets/MovieView';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
@@ -7,41 +6,29 @@ import UpComing from './Componets/UpComing';
 import TopRated from './Componets/TopRated';
 import { useState, useEffect } from 'react'
 
-
-
-
-
 function App() {
   const [sessionToken, setSessionToken] = useState('')
   useEffect(() => {
     if (localStorage.getItem('token')) {
       setSessionToken(localStorage.getItem('token'))
+      console.log(localStorage.getItem('token'));
     }
   }, [])
 
+  console.log(sessionToken);
+  
   const updateToken = (newToken) => {
     localStorage.setItem('token', newToken);
     setSessionToken(newToken);
-    console.log(sessionToken)
+    console.log("sessionToken", newToken)
   }
 
-  // const [token, setToken] = useState(undefined)
-
-  // const viewConductor =() => {
-  //   return token === undefined ? <Auth updateToken={updateToken} /> : <Movieview token = {token} />
-  // }
-
-  // const updateToken = (newToken) => {
-  //   setToken(newToken)
-  // }
-    
+     
   return (
 
     <div>
 
-    
-  {/* <Auth updateToken={updateToken}/> */}
-    <BrowserRouter>
+      <BrowserRouter>
       <Switch>
       
       <Route path='/' exact component={Movieview} />
