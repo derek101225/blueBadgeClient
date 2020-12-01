@@ -1,7 +1,24 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+
+
+
+
+    
+  
 
 const SignUp = () => {
+    const history = useHistory();
+    
+    function handleSubmit(event) {
+    event.preventDefault(); 
+      history.push("/");
+    }
+    
+    
+    
+    
   return (
     <div>
       <Form>
@@ -20,9 +37,11 @@ const SignUp = () => {
         <Form.Group controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
-        <Button variant="primary" type="submit">
+       <Button onClick={handleSubmit} variant="primary" type="submit">
           Submit
         </Button>
+
+      
       </Form>
     </div>
   );

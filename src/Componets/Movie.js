@@ -16,7 +16,7 @@ const Movie = (props) => {
                 <img variant="primary" onClick={handleShow} src={IMG_API} alt={props.movie.title} />
                 <div className='movie-info'>
                     <h3>{props.movie.title}</h3>
-                    <span>{props.movie.vote_average}</span>
+                    <span className='vote'>{props.movie.vote_average}</span>
                 </div>
                 <div className="movie-over" onClick={handleShow}>
                     <h2>Overview:</h2>
