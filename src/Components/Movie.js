@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import {Modal} from 'react-bootstrap';
-import RatingIndex from '../Components/Rating/RatingIndex'
+import RatingIndex from './Rating/RatingIndex'
 
 
 const Movie = (props) => {

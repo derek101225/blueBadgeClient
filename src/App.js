@@ -1,12 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import Movieview from './Componets/MovieView';
+import Movieview from './Components/MovieView';
 import Auth from './Components/Auth/Auth'
-import UpComing from './Componets/UpComing';
-import TopRated from './Componets/TopRated';
-import SignUp from './Componets/SignUp';
-import Auth from './Components/Auth/Auth'
+import UpComing from './Components/UpComing';
+import TopRated from './Components/TopRated';
+import SignUp from './Components/SignUp';
+
 
 
 
@@ -41,7 +41,7 @@ function App() {
     <div>
 
     
-  {/* <Auth updateToken={updateToken}/> */}
+ 
     <BrowserRouter>
       <Switch>
       

@@ -14,6 +14,7 @@ const SignUp = () => {
     function handleSubmit(event) {
     event.preventDefault(); 
       history.push("/");
+      
     }
     
     

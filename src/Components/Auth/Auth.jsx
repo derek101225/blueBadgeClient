@@ -1,28 +1,11 @@
-import React from 'react';
+import React, {useState}  from 'react';
 import {Container, Row, Col} from 'reactstrap'
 import Signup from './Signup'
 import Login from './Login'
 
 
 const Auth = (props) => {
-    return (
-        <Container className="auth-container">
-            <Row>
-                <Col md="6">
-                    <Signup updateToken={props.updateToken}/>
-                </Col>
-                <Col md="6">
-                    <Login updateToken={props.updateToken}/>
-                </Col>
-            </Row>
-        </Container>
-    )
-}
-
-// const Auth = (props) => {
-//     console.log(props);
     
-
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -81,57 +64,23 @@ const Auth = (props) => {
              </div>          
          ) : null
      } 
-
-
     
-
-
-
-
-
-     return (
-         <div>
-            <form onSubmit= {handleSubmit}>
-                <h1>{title()}</h1>
-                {signupFields()}
-                <label htmlFor ="username">Username</label>
-                <br />
-                <input 
-                id="username"
-                value={username}
-                placeholder="username"
-                onChange={(event) => {
-                    setUsername(event.target.value)
-                }} />
-            <br />
-
-            <label htmlFor="password">Password:</label>
-            <br />
-            <input 
-            id="password"
-            value={password}
-            placeholder="password"
-            onChange={(event) => {
-                // console.log(event)
-                setPassword(event.target.value)
-            }} />
-            <br />
-            <button type="submit">Submit</button>
-            <br />
-            <button type="submit">Login</button>
-            <br />
-            <button onClick={loginToggle}>Sign Up</button>
-
-            </form>
-
-
-       
-
-         </div>
-     )
-    }
-
-
+    
+    
+    
+    return (
+        <Container className="auth-container">
+            <Row>
+                <Col md="6">
+                    <Signup updateToken={props.updateToken}/>
+                </Col>
+                <Col md="6">
+                    <Login updateToken={props.updateToken}/>
+                </Col>
+            </Row>
+        </Container>
+    )
+}
 
 
 
