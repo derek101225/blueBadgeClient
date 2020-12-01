@@ -108,6 +108,9 @@ header {
   text-decoration: none !important;
   padding: 0 15px 0 15px;
 }
+a:hover {
+  color: White !important;
+}
 
 .modal {
   color: black;

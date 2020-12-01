@@ -50,6 +50,8 @@ function Movieview() {
     <div className='movie-container'>
       {movies.length > 0 ?  movies.map((movie) => <Movie movie={movie} key={movie.id} />)  : <> </> }
     </div>
+
+
     </>
   );
 }

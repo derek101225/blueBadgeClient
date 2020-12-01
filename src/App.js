@@ -1,7 +1,8 @@
-import React from 'react';
 import Movieview from './Componets/MovieView';
+import Auth from './Components/Auth/Auth'
+import { useState } from 'react'
+import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-
 import UpComing from './Componets/UpComing';
 import TopRated from './Componets/TopRated';
 
@@ -10,9 +11,20 @@ import TopRated from './Componets/TopRated';
 
 
 function App() {
-  return (
-    <div>
+  const [token, setToken] = useState(undefined)
+
+  const viewConductor =() => {
+    return token === undefined ? <Auth updateToken={updateToken} /> : <Movieview token = {token} />
+  }
+
+  const updateToken = (newToken) => {
+    setToken(newToken)
+  }
     
+  return (
+
+    <div>
+    <button>{viewConductor()}</button>
     <BrowserRouter>
       <Switch>
       
@@ -24,6 +36,7 @@ function App() {
       </Switch>
     </BrowserRouter>
     
+
     </div>
   );
 }
