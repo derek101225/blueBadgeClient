@@ -3,6 +3,7 @@ import Movie from './Movie'
 
 const featured_API = `https://api.themoviedb.org/3/movie/popular?api_key=58269892c382f28ba4692e1cab597755&language=en-US&page=1`
 
+
 function Movieview() {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('')
@@ -14,7 +15,6 @@ function Movieview() {
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.results);
-        
       });
   },[])
 
@@ -26,6 +26,7 @@ function Movieview() {
           .then((res) => res.json())
           .then((data) => {
             setMovies(data.results);
+            
           });
           setSearchTerm('')
         }
@@ -33,8 +34,6 @@ function Movieview() {
   const handleOnChange = (e) => {
     setSearchTerm(e.target.value);
   }
-
-
 
   return (
     <>
