@@ -109,7 +109,7 @@ header {
   padding: 0 15px 0 15px;
 }
 a:hover {
-  color: White !important;
+  color: rgb(201, 173, 255) !important;
 }
 
 .modal {

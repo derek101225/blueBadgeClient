@@ -63,6 +63,13 @@ const Auth = (props) => {
          ) : null
      } 
 
+
+    
+
+
+
+
+
      return (
          <div>
             <form onSubmit= {handleSubmit}>
@@ -97,6 +104,10 @@ const Auth = (props) => {
             <button onClick={loginToggle}>Sign Up</button>
 
             </form>
+
+
+       
+
          </div>
      )
     }
@@ -106,3 +117,5 @@ const Auth = (props) => {
 
 
 export default Auth;
+
+
