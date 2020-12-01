@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
-
 const RatingCreate = (props) => {
     const [rating, setRating] = useState('');
     const [movieId, setMovieId] = useState('');
@@ -21,7 +20,7 @@ const RatingCreate = (props) => {
             console.log(ratingData);
             setRating(''),
             setMovieId(''),
-            setUserId(''),
+            setUserId('')
             props.fetchRating();
         })
     }
@@ -31,12 +30,9 @@ const RatingCreate = (props) => {
                 <Box component="fieldset" mb={3} borderColor="transparent">
                     <Rating name="customized-10" value={rating} defaultValue={0} max={10} onClick={(e) => setRating(e.target.value)}/>
                 </Box>
-            <form>
-                <label htmlFor="movieId">Movie ID</label>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="rating">Rating</label>
                 <input type="text" name="movieId" value={movieId} onChange={(e) => setMovieId(e.target.value)}></input>
-                <br/>
-                <label htmlFor="userId">User ID</label>
-                <input type="text" name="movieId" value={userId} onChange={(e) => setUserId(e.target.value)}></input>
                 <br/>
                 <button type="submit">Submit</button>
             </form>

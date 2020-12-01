@@ -20,7 +20,7 @@ const RatingIndex = (props) => {
     }, [])
     return (
         <div>
-            <RatingCreate fetchRating={fetchRating} token={props.token} />
+            <RatingCreate />
         </div>
     )
 }
