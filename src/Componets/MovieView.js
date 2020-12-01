@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import Movie from './Movie'
 
+
+
 const featured_API = `https://api.themoviedb.org/3/movie/popular?api_key=58269892c382f28ba4692e1cab597755&language=en-US&page=1`
 
 function Movieview() {
@@ -45,7 +47,7 @@ function Movieview() {
             <input className='search' type='text' value={searchTerm} onChange={handleOnChange} placeholder='Search Movie' />
         </form>
         <a className='Home' href='/TopRated'><h3 className='nav'>Top Rated</h3></a>
-        <a className='Home' href='/SignUp'><h3 className='nav'>Login/sign up</h3></a>
+        <a className='Home' href='/Auth'><h3 className='nav'>Login/sign up</h3></a>
     </header>
 
     <div className='movie-container'>
