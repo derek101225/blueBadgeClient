@@ -5,7 +5,7 @@ import Movie from './Movie'
 
 const featured_API = `https://api.themoviedb.org/3/movie/popular?api_key=58269892c382f28ba4692e1cab597755&language=en-US&page=1`
 
-function Movieview() {
+function Movieview(props) {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -51,7 +51,7 @@ function Movieview() {
     </header>
 
     <div className='movie-container'>
-      {movies.length > 0 ?  movies.map((movie) => <Movie movie={movie} key={movie.id} />)  : <> </> }
+      {movies.length > 0 ?  movies.map((movie) => <Movie movie={movie} key={movie.id} sessionToken={props.sessionToken} />)  : <> </> }
     </div>
 
 

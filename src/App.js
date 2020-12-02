@@ -31,12 +31,13 @@ function App() {
       <BrowserRouter>
       <Switch>
       
-      <Route path='/' exact component={Movieview} />
+      <Route path='/' exact render={() =>  <Movieview sessionToken={sessionToken} />} />
       
       <Route path='/Upcoming' exact component={UpComing} />
       <Route path='/TopRated' exact component={TopRated} />
       <Auth updateToken={updateToken}/>
       <Route path='/Auth' exact component={Auth } />
+      
       
       </Switch>
     </BrowserRouter>

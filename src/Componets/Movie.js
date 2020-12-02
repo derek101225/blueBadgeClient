@@ -33,7 +33,7 @@ const Movie = (props) => {
                     <img className='img' variant="primary" src={IMG_API} alt={props.movie.title} />
                     </div>
                 </Modal.Header>
-                <Modal.Body>{props.movie.title} <br /> <span><RatingIndex movie={props.movie}/></span></Modal.Body>
+                <Modal.Body>{props.movie.title} <br /> <span><RatingIndex movie={props.movie} sessionToken={props.sessionToken}/></span></Modal.Body>
                 <Modal.Footer>
                     
                 </Modal.Footer>
