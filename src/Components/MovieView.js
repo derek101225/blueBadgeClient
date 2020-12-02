@@ -1,9 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import Movie from './Movie'
+import InfiniteScroll from 'react-infinite-scroller';
 
 
 
-const featured_API = `https://api.themoviedb.org/3/movie/popular?api_key=58269892c382f28ba4692e1cab597755&language=en-US&page=1`
+
+
+let featured_API = `https://api.themoviedb.org/3/movie/popular?api_key=58269892c382f28ba4692e1cab597755&language=en-US&$`
+
 
 function Movieview() {
   const [movies, setMovies] = useState([]);
@@ -16,7 +20,6 @@ function Movieview() {
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.results);
-        
       });
   },[])
 
@@ -28,6 +31,7 @@ function Movieview() {
           .then((res) => res.json())
           .then((data) => {
             setMovies(data.results);
+            
           });
           setSearchTerm('')
         }
@@ -36,10 +40,10 @@ function Movieview() {
     setSearchTerm(e.target.value);
   }
 
-
-
+  let page = 0
   return (
     <>
+
     <header>
     <a className='Home' href='/'><h3 className='nav'>MovieView</h3></a>
     <a className='Home' href='/UpComing'><h3 className='nav'>Up Coming</h3></a>
@@ -47,7 +51,9 @@ function Movieview() {
             <input className='search' type='text' value={searchTerm} onChange={handleOnChange} placeholder='Search Movie' />
         </form>
         <a className='Home' href='/TopRated'><h3 className='nav'>Top Rated</h3></a>
+
         <a className='Home' href='/Auth'><h3 className='nav'>Login/sign up</h3></a>
+
     </header>
 
     <div className='movie-container'>
@@ -55,7 +61,27 @@ function Movieview() {
     </div>
 
 
+
+
+    <div>
+    <InfiniteScroll
+       
+         page={0}
+        hasMore={true || false}
+        loader={<div className="loader" key={0}>Loading ...</div>}
+        useWindow={false}
+        getScrollParent={() => this.scrollParentRef}
+    >
+        {`https://api.themoviedb.org/3/movie/popular?api_key=58269892c382f28ba4692e1cab597755&language=en-US&${page}`}
+    </InfiniteScroll>
+
+</div>
+
+
+
+
     </>
+   
   );
 }
 
