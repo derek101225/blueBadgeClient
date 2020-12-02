@@ -1,68 +1,78 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
-export default class Table extends React.Component {
+const URL = 'http://localhost:3000/ratings/myratings'
 
-    constructor(props) {
-        super(props);
-        this.getHeader = this.getHeader.bind(this);
-        this.getRowsData = this.getRowsData.bind(this);
-        this.getKeys = this.getKeys.bind(this);
+const Table = (props) => {
+    const [ratings, setRatings] = useState([])   //employees , setEmployees
+
+    console.log(props.sessionToken)
+
+    useEffect(() => {
+        getData()
+    }, [])
+
+    const getData = async () => {
+        const response = await axios.get(URL, {
+            headers: ({
+                'Content-Type': 'application/json',
+                'Authorization': props.sessionToken
+            })
+        })
+        setRatings(response.data)
     }
 
-    getKeys = function() {
-        return Object.keys(this.props.data[0]);
+    const removeData = async (id) => {
+
+        await axios.delete(`${URL}/${id}`, {
+            headers: ({
+                'Content-Type': 'application/json',
+                'Authorization': props.sessionToken
+            })
+        })
+        
+        .then(res => {
+            const del = ratings.filter(rating => id !== rating.id)
+            setRatings(del)
+        })
     }
 
-    getHeader = function() {
+    const renderHeader = () => {
+        let headerElement = ['id', 'rating', 'movieId']
 
+        return headerElement.map((key, index) => {
+            return <th key={index}>{key.toUpperCase()}</th>
+        })
     }
 
-    getRowsData = function(){
-
+    const renderBody = () => {
+        return ratings && ratings.map(({ id, rating, movieId }) => {
+            return (
+                <tr key={id}>
+                    <td>{id}</td>
+                    <td>{rating}</td>
+                    <td>{movieId}</td>
+                    <td className='opration'>
+                        <button className='button' onClick={() => removeData(id)}>Delete</button>
+                    </td>
+                </tr>
+            )
+        })
     }
 
-    render () {
-        return(
-            <div>
-                <table>
-                    <thead>
-                        <tr>{this.getHeader()}</tr>
-                    </thead>
-                    <tbody>
-                        {this.getRowsData()}
-                    </tbody>
-                </table>
-            </div>
-        );
-    }
+    return (
+        <>
+            <h1 id='title'>React Table</h1>
+            <table id='rating'>
+                <thead>
+                    <tr>{renderHeader()}</tr>
+                </thead>
+                <tbody>
+                    {renderBody()}
+                </tbody>
+            </table>
+        </>
+    )
 }
 
-const RenderRow = (props) => {
-
-}
-
-
-
-// const RatingTable = (props) => {
-
-//     const [table, setTable] = useState([])
-
-//     const fetchRating = () => {
-//             fetch(`http://localhost:3000/ratings/myratings`, {
-//                 method: 'GET',
-//                 headers: new Headers ({
-//                     'Content-Type': 'application/json',
-//                     'Authorization': props.sessionToken
-//                 })
-//             })
-//             .then ((res) => res.json())
-//             .then ((tableData) => {
-//                 setTable(tableData)
-//                 console.log(tableData)
-//             })
-//         }
-    
-//         useEffect (() => {
-//             fetchRating();
-//         }, [])
-// }
+export default Table

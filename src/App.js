@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Auth from './Components/Auth/Auth'
 import UpComing from './Componets/UpComing';
 import TopRated from './Componets/TopRated';
+import Table from './Components/Rating/MyRatings'
 import { useState, useEffect } from 'react'
 
 function App() {
@@ -30,9 +31,9 @@ function App() {
         <Switch>
       
           <Route path='/' exact render={() => <Movieview sessionToken={sessionToken}/>} />
+          <Route path='/Table' exact render={() => <Table sessionToken={sessionToken}/>} />
           <Route path='/Upcoming' exact component={UpComing} />
           <Route path='/TopRated' exact component={TopRated} />
-          
           <Route path='/Auth' exact render={() => <Auth updateToken={updateToken}/>} />
                 
         </Switch>
