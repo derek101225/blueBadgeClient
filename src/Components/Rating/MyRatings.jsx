@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-
+import EditRating from './EditRating';
 const URL = 'http://localhost:3000/ratings/myratings'
 
 const Table = (props) => {
-    const [ratings, setRatings] = useState([])   //employees , setEmployees
+    const [ratings, setRatings] = useState([])
+    const [updateActive, setUpdateActive] = useState(true);
+    // const [ratingToUpdate, setRatingToUpdate] = useState()
 
     console.log(props.sessionToken)
 
@@ -13,27 +14,40 @@ const Table = (props) => {
     }, [])
 
     const getData = async () => {
-        const response = await axios.get(URL, {
-            headers: ({
+        const response = await fetch(URL, {
+            method: 'GET',
+            headers: {
                 'Content-Type': 'application/json',
                 'Authorization': props.sessionToken
-            })
+            }
         })
-        setRatings(response.data)
+        const data = await response.json()
+        console.log(data)
+        setRatings(data)
+    }
+
+    // const editUpdateRating = (rating) => {
+    //     setRatingToUpdate (rating);
+    // }
+
+    const updateOn = () => {
+        setUpdateActive(true);
+    }
+
+    const updateOff = () => {
+        setUpdateActive(false);
     }
 
     const removeData = async (id) => {
-
-        await axios.delete(`${URL}/${id}`, {
-            headers: ({
+        await fetch(`${URL}/${id}`, {
+            method: 'DELETE',
+            headers: {
                 'Content-Type': 'application/json',
                 'Authorization': props.sessionToken
-            })
+            }
         })
-        
         .then(res => {
-            const del = ratings.filter(rating => id !== rating.id)
-            setRatings(del)
+            getData()
         })
     }
 
@@ -55,11 +69,14 @@ const Table = (props) => {
                     <td className='opration'>
                         <button className='button' onClick={() => removeData(id)}>Delete</button>
                     </td>
+                    <td>
+                        {updateActive ? <EditRating sessionToken={props.sessionToken} updateOff={updateOff} ratings={ratings} getData={getData}/> : <></>}
+                    </td>
                 </tr>
             )
         })
     }
-
+    
     return (
         <>
             <h1 id='title'>React Table</h1>
@@ -67,12 +84,11 @@ const Table = (props) => {
                 <thead>
                     <tr>{renderHeader()}</tr>
                 </thead>
-                <tbody>
-                    {renderBody()}
-                </tbody>
+                <tbody>{renderBody()}</tbody>
             </table>
         </>
     )
 }
+
 
 export default Table
