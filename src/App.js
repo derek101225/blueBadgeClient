@@ -32,8 +32,8 @@ function App() {
           <Route path='/' exact render={() => <Movieview sessionToken={sessionToken}/>} />
           <Route path='/Upcoming' exact component={UpComing} />
           <Route path='/TopRated' exact component={TopRated} />
-          <Auth updateToken={updateToken}/>
-          <Route path='/Auth' exact component={Auth } />
+          
+          <Route path='/Auth' exact render={() => <Auth updateToken={updateToken}/>} />
                 
         </Switch>
       </BrowserRouter>
