@@ -1,28 +1,27 @@
 import React, {useState, useEffect} from 'react';
-import RatingCreate from './RatingCreate';
+import {Container, Row, Col} from 'reactstrap';
+const URL = 'http://localhost:3000/ratings/myratings';
+
 const RatingIndex = (props) => {
-    // const [rating, setRating] = useState([])
+    const [ratings, setRatings] = useState([]);
+    
+    const fetchRatings = async () => {
+        const response = await fetch(URL, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': props.sessionToken
+            }
+        })
+        const data = await response.json()
+        console.log(data)
+        setRatings(data)
+    }
+}
 
-    // console.log(props)
 
-    // const fetchRating = () => {
-    //     fetch(`http://localhost:3000/ratings/`, {
-    //         method: 'GET',
-    //         headers: new Headers ({
-    //             'Content-Type': 'application/json',
-    //             'Authorization': props.sessionToken
-    //         })
-    //     })
-    //     .then ((res) => res.json())
-    //     .then ((ratingData) => {
-    //         setRating(ratingData)
-    //         console.log(ratingData)
-    //     })
-    // }
 
-    // useEffect (() => {
-    //     fetchRating();
-    // }, [])
+const RatingIndex = (props) => {
 
     return (
         <div>
