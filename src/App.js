@@ -20,28 +20,24 @@ function App() {
   const updateToken = (newToken) => {
     localStorage.setItem('token', newToken);
     setSessionToken(newToken);
-    console.log("sessionToken", newToken)
   }
 
-     
   return (
 
     <div>
 
       <BrowserRouter>
-      <Switch>
+        <Switch>
       
-      <Route path='/' exact component={Movieview} />
-      
-      <Route path='/Upcoming' exact component={UpComing} />
-      <Route path='/TopRated' exact component={TopRated} />
-      <Auth updateToken={updateToken}/>
-      <Route path='/Auth' exact component={Auth } />
-      
-      </Switch>
-    </BrowserRouter>
+          <Route path='/' exact render={() => <Movieview sessionToken={sessionToken}/>} />
+          <Route path='/Upcoming' exact component={UpComing} />
+          <Route path='/TopRated' exact component={TopRated} />
+          
+          <Route path='/Auth' exact render={() => <Auth updateToken={updateToken}/>} />
+                
+        </Switch>
+      </BrowserRouter>
     
-
     </div>
   );
 }

@@ -7,24 +7,20 @@ const RatingCreate = (props) => {
     const [movieId, setMovieId] = useState(props.movie.id);
     
     console.log(rating, movieId);
-
-    console.log(props);
-
+       
     const handleSubmit = (e) => {
-        e.preventDefault();
+        if (e) {e.preventDefault()};
         fetch('http://localhost:3000/ratings/createrating/', {
             method: 'POST',
             body: JSON.stringify({rating, movieId}),
             headers: new Headers ({
                 'Content-Type': 'application/json',
-                'Authorization': props.token
+                'Authorization': props.sessionToken
             })
         })
         .then((res) => res.json())
         .then((ratingData) => {
             console.log(ratingData);
-            props.updateToken(ratingData.token)
-            // props.fetchRating();
         })
     }
 
@@ -32,27 +28,11 @@ const RatingCreate = (props) => {
         <>
             <div>
                 <Box component="fieldset" mb={3} borderColor="transparent">
-                    <Rating name="customized-10" value={rating} defaultValue={0} max={10} onClick={handleSubmit}/>
+                    <Rating name="customized-10" value={rating} defaultValue={0} max={10} onChange={(e) => setRating(e.target.value)} onClick={handleSubmit()}/>
                 </Box>
-            {/* <form>
-                <label htmlFor="movieId">Movie ID</label>
-                <input type="text" name="movieId" value={movieId} onChange={(e) => setMovieId(e.target.value)}></input>
-                <br/>
-                <label htmlFor="userId">User ID</label>
-                <input type="text" name="movieId" value={userId} onChange={(e) => setUserId(e.target.value)}></input>
-                <br/>
-                <button type="submit">Submit</button>
-            </form> */}
             </div>
         </>
     )
 }
 export default RatingCreate
 
-
-
-//passing in the movieID from API a few parents up
-//saving produces error, saving elsewhere compiles fine after
-//cors errors
-//pass in userId upon rating
-//fetch connecting to DB
