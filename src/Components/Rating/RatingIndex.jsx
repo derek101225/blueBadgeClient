@@ -1,5 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import RatingCreate from './RatingCreate';
+import APIURL from '../../helpers/enviornment';
+
+const URL = `${APIURL}/ratings/myratings`
+
 const RatingIndex = (props) => {
     // const [rating, setRating] = useState([])
 

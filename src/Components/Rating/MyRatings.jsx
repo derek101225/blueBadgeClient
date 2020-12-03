@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import EditRating from './EditRating';
-const URL = 'http://localhost:3000/ratings/myratings'
+import APIURL from '../../helpers/enviornment';
+
+const URL = `${APIURL}/ratings/myratings`;
 
 const Table = (props) => {
     const [ratings, setRatings] = useState([])

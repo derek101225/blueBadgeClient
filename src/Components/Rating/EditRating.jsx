@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react'
-const URL = 'http://localhost:3000/ratings/myratings'
+import React, { useState, useEffect } from 'react';
+import APIURL from '../../helpers/enviornment';
+
+const URL = `${APIURL}/ratings/myratings`;
 
 const EditRating = (props) => {
     const [movieRating, setMovieRating] = useState()

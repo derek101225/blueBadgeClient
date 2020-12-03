@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
+import APIURL from '../../helpers/enviornment';
+
 
 const RatingCreate = (props) => {
     const [rating, setRating] = useState();
@@ -10,7 +12,7 @@ const RatingCreate = (props) => {
        
     const handleSubmit = (e) => {
         if (e) {e.preventDefault()};
-        fetch('http://localhost:3000/ratings/createrating/', {
+        fetch(`${APIURL}/ratings/createrating`, {
             method: 'POST',
             body: JSON.stringify({rating, movieId}),
             headers: new Headers ({

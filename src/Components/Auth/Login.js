@@ -2,6 +2,7 @@ import React from 'react'
 import { Form, FormGroup, Label, Input, Button} from 'reactstrap'
 import { useState } from 'react'
 import {useHistory} from 'react-router-dom';
+import APIURL from '../../helpers/enviornment';
 
 const Login = (props) => {
     const [username, setUsername] = useState('')
@@ -10,7 +11,7 @@ const Login = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3000/user/login", {
+        fetch(`${APIURL}/user/login`, {
             method: 'POST',
             body: JSON.stringify({username: username, password: password}),
             headers: new Headers({
