@@ -47,7 +47,7 @@ function Movieview(props) {
             <input className='search' type='text' value={searchTerm} onChange={handleOnChange} placeholder='Search Movie' />
         </form>
         <Link className='Home' to='/TopRated'><h3 className='nav'>Top Rated</h3></Link>
-        <Link className='Home' to='/Table'><h3 className='nav'>Ratings</h3></Link>
+        <Link className='Home' to='/RatingIndex'><h3 className='nav'>Ratings</h3></Link>
         <Link className='Home' to='/Auth'><h3 className='nav'>Login/sign up</h3></Link>
     </header>
 
