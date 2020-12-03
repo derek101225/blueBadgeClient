@@ -5,7 +5,7 @@ switch (window.location.hostname) {
         APIURL = 'http://localhost:3000';
         break;
     case 'nas-movieview-client.herokuapp.com':
-        APIURL = 'https://nas-movieview-client.herokuapp.com'
+        APIURL = 'https://nas-movieview.herokuapp.com'
 }
 
 export default APIURL;
