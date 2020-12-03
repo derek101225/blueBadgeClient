@@ -9,7 +9,7 @@ const RatingTable = (props) => {
     
     const deleteRating = (id) => {
         console.log(id)
-        fetch(`${APIURL}/${id}`, {
+        fetch(`${APIURL}/ratings/myratings/${id}`, {
             method: 'DELETE',
             headers: new Headers ({
                 'Content-Type': 'application/json',
